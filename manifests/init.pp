@@ -16,7 +16,7 @@ class mcollective (
   $connector        = 'activemq',
   $securityprovider = 'psk',
   $psk              = 'changemeplease',
-	$userssl          = true,
+  $userssl          = true,
   $factsource       = 'yaml',
   $yaml_fact_path   = undef,
   $excluded_facts   = [],

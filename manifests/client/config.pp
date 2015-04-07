@@ -24,14 +24,14 @@ class mcollective::client::config {
       path     => $mcollective::client_config_file_real,
       template => 'mcollective/settings.cfg.erb',
     }
-		file { $mcollective::ssl_client_keys_dir_real:
-			ensure  => 'directory',
-							owner   => 'root',
-							group   => '0',
-							purge   => true,
-							recurse => true,
-							mode    => '0400',
-							source  => $mcollective::ssl_client_keys,
+    file { $mcollective::ssl_client_keys_dir_real:
+      ensure  => 'directory',
+      owner   => 'root',
+      group   => '0',
+      purge   => true,
+      recurse => true,
+      mode    => '0400',
+      source  => $mcollective::ssl_client_keys,
 		}
   }
 
