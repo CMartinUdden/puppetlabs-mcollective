@@ -28,6 +28,14 @@ class mcollective::server::config {
     value => $mcollective::server_loglevel,
   }
 
+  mcollective::server::setting { 'keeplogs':
+    value => $mcollective::server_keeplogs,
+  }
+
+  mcollective::server::setting { 'max_log_size':
+    value => $mcollective::server_max_log_size,
+  }
+
   file { "${mcollective::confdir}/policies":
     ensure => 'directory',
     owner  => 'root',

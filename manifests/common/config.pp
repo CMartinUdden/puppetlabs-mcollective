@@ -54,6 +54,18 @@ class mcollective::common::config {
     value => $mcollective::main_collective,
   }
 
+  mcollective::common::setting { 'discovery_timeout':
+    value => $mcollective::discovery_timeout,
+  }
+
+  mcollective::common::setting { 'publish_timeout':
+    value => $mcollective::publish_timeout,
+  }
+
+  mcollective::common::setting { 'connection_timeout':
+    value => $mcollective::connection_timeout,
+  }
+
   if $mcollective::middleware_ssl or $mcollective::securityprovider == 'ssl' {
     file { "${mcollective::confdir}/ca.pem":
       owner  => 'root',

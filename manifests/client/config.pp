@@ -39,6 +39,14 @@ class mcollective::client::config {
     value => $mcollective::client_loglevel,
   }
 
+  mcollective::client::setting { 'keeplogs':
+    value => $mcollective::client_keeplogs,
+  }
+
+  mcollective::client::setting { 'max_log_size':
+    value => $mcollective::client_max_log_size,
+  }
+
   mcollective::client::setting { 'logger_type':
     value => $mcollective::client_logger_type,
   }

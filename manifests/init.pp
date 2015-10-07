@@ -43,18 +43,22 @@ class mcollective (
 
   $pluginconf          = {},
   # server-specific
-  $server_config_file = undef, # default dependent on $confdir
-  $server_logfile     = '/var/log/mcollective.log',
-  $server_loglevel    = 'info',
-  $server_daemonize   = 1,
-  $service_name       = 'mcollective',
-  $common_package     = 'mcollective',
-  $ruby_stomp_package = 'ruby-stomp',
+  $server_config_file  = undef, # default dependent on $confdir
+  $server_logfile      = '/var/log/mcollective.log',
+  $server_keeplogs     = '5',
+  $server_max_log_size = '2097152',
+  $server_loglevel     = 'info',
+  $server_daemonize    = 1,
+  $service_name        = 'mcollective',
+  $common_package      = 'mcollective',
+  $ruby_stomp_package  = 'ruby-stomp',
 
   # client-specific
   $client_config_file  = undef, # default dependent on $confdir
   $client_logger_type  = 'console',
   $client_loglevel     = 'warn',
+  $client_keeplogs     = '5',
+  $client_max_log_size = '2097152',
   $client_package      = 'mcollective-client',
 
   # ssl certs
@@ -64,6 +68,11 @@ class mcollective (
   $ssl_client_certs     = 'puppet:///modules/mcollective/empty',
   $ssl_client_keys      = 'puppet:///modules/mcollective/empty',
   $ssl_client_certs_dir = undef, # default dependent on $confdir
+
+  # timeouts
+  $connection_timeout   = '1',
+  $publish_timeout      = '1',
+  $discovery_timeout    = '1',
 ) inherits mcollective::defaults {
 
   # Because the correct default value for several parameters is based on another
