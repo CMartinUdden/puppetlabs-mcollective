@@ -65,11 +65,14 @@ class mcollective (
   $client_package      = 'mcollective-client',
 
   # ssl certs
-  $ssl_ca_cert          = undef,
-  $ssl_server_public    = undef,
-  $ssl_server_private   = undef,
-  $ssl_client_certs     = 'puppet:///modules/mcollective/empty',
-  $ssl_client_certs_dir = undef, # default dependent on $confdir
+  $ssl_ca_cert            = undef,
+  $ssl_server_public      = undef,
+  $ssl_server_private     = undef,
+  $ssl_client_certs       = 'puppet:///modules/mcollective/empty',
+  $ssl_client_keys        = 'puppet:///modules/mcollective/empty',
+  $ssl_client_certs_dir   = undef, # default dependent on $confdir
+  $ssl_client_keys_dir    = undef, # default dependent on $confdir
+  $ssl_client_manage_keys = false,
 
   # ssl ciphers
   $ssl_ciphers = undef,
@@ -88,6 +91,7 @@ class mcollective (
   $ssldir = "${confdir}/ssl"
 
   $ssl_client_certs_dir_real = pick_default($ssl_client_certs_dir, "${ssldir}/clients")
+  $ssl_client_keys_dir_real = pick_default($ssl_client_keys_dir, "${confdir}/private")
   $ssl_server_public_path    = "${ssldir}/server_public.pem"
   $ssl_server_private_path   = "${ssldir}/server_private.pem"
 
